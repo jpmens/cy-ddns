@@ -171,7 +171,7 @@ dlz_lookup(const char *zone, const char *name, void *dbdata,
 	   dns_sdlzlookup_t *lookup, dns_clientinfomethods_t *methods,
 	   dns_clientinfo_t *clientinfo)
 {
-	isc_result_t result;
+	isc_result_t result = ISC_R_SUCCESS;
 	struct dlz_example_data *state = (struct dlz_example_data *)dbdata;
 	isc_boolean_t found = ISC_FALSE;
 	isc_sockaddr_t *src;
@@ -210,9 +210,9 @@ dlz_lookup(const char *zone, const char *name, void *dbdata,
 	}
 
 	if (!found)
-		return (ISC_R_NOTFOUND);
+		result =ISC_R_NOTFOUND;
 
-	return (ISC_R_SUCCESS);
+	return (result);
 }
 
 
